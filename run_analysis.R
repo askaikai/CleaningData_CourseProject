@@ -73,9 +73,29 @@ run_analysis = function(){
   
   ### 5. Creates a second, independent tidy data set with the average of 
   ###   each variable for each activity and each subject.
+  # prep output Matrix to populate
+  require('sqldf')
+
+  sub = unique(meanSdData$sub.id)
+  act = unique(meanSdData$activity)
+  outMat = data.frame(matrix(0,length(sub)*length(act),dim(meanSdData)[2]))
+  colnames(outMat)=colnames(meanSdData)
+  varIn = gsub("[[:punct:]]","_",colnames(meanSdData)) # sql doesn't like "."
   
+  for (i in 3:length(varIn)){
+    if (i==3){
+      sqlIn = paste0('select sub_id, activity, avg(', varIn[i] ,
+                     ') from meanSdData group by sub_id, activity')
+      outMat[,1:3]=sqldf(sqlIn)
+    } else {
+      sqlIn = paste0('select avg(', varIn[i] ,
+                     ') from meanSdData group by sub_id, activity')
+      outMat[,i]=sqldf(sqlIn)
+    }
+  }
   
-  
-  
+  # now write it out
+  write.table(outMat, file="meanSd_bySubByActivity.txt",sep=",",
+              col.names=TRUE, row.names=FALSE)
   
 }
