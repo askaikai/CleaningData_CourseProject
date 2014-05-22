@@ -8,6 +8,11 @@ run_analysis = function(){
   # 4. Appropriately labels the data set with descriptive activity names. 
   # 5. Creates a second, independent tidy data set with the average of 
   #   each variable for each activity and each subject. 
+  #
+  # this fxn outputs 2 text files: one with raw data of mean and std of each
+  # measurement. the other representes data from the first data set,
+  # averaged for each activity and each subject.
+  # 
   
   # first, make sure we are in the right directory
   setwd("~/Documents/Coursera/GettingAndCleaningData//CleaningData_CourseProject")
