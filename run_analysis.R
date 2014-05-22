@@ -27,11 +27,11 @@ run_analysis = function(){
   
   # now name columns
   features = read.table("../data//UCIHARDataset//features.txt", stringsAsFactors = F)
-  feat = gsub("[[:punct:]]",".",features[,2])
-  feat = gsub("[[:punct:]]{2,}",".",feat)
-  feat = gsub("[[:punct:]]$","",feat)
+  feat = gsub("[[:punct:]]",".",features[,2]) # get rid of "(" and ")"
+  feat = gsub("[[:punct:]]{2,}",".",feat) # if "." happens more then once, reduce to just one "."
+  feat = gsub("[[:punct:]]$","",feat) # get rid of punctuation at the end of label
   
-  colnames(masterData)=c("subID","activity",feat)
+  colnames(masterData)=c("sub.id","activity",feat)
   
   ### 2. Extracts only the measurements on the mean and standard deviation 
   ###   for each measurement.
@@ -48,6 +48,33 @@ run_analysis = function(){
   meanSdData$activity=newAct
 
   ### 4. Appropriately labels the data set with descriptive activity names.
+  # note: some of the cleaning up (e.g. getting rid of () and "...") have been
+  # done at the end of step 1, using gsub
+  a=colnames(meanSdData)
+  a=gsub("^f","fft.",a) # clean f -> fft
+  a=gsub("^t","time.",a) # clean t -> time
+  a=gsub("BodyBody","Body",a) # BodyBody -> Body
+  a=gsub("([[:upper:]][[:lower:]]*)", "\\1.", a) # separate camelcase with "."
+  a=gsub("Acc","Acceleration",a)
+  a=gsub("Mag","Magnitude",a)
+  a=gsub("meanFreq","mean.Frequency",a)
+  a=gsub("Gyro","Gyroscope",a)
+  a=gsub("tBody","time.Body",a)
+  a=gsub("gravityMean","gravity.Mean",a)
+  a=gsub("[[:punct:]]{2,}",".",a) # if "." happens more then once, reduce to just one "."
+  a=gsub("[[:punct:]]$","",a) # get rid of punctuation at the end of label
+  a=tolower(a) # set everything to lower-case
+  
+  # now write .txt file
+  colnames(meanSdData)=a # set col names back to data frame
+  meanSdData=meanSdData[order(meanSdData$sub.id),] # sort by subID for easy reading
+  write.table(meanSdData, file="meanSd_allData.txt",sep=",",
+              col.names=TRUE, row.names=FALSE)
+  
+  ### 5. Creates a second, independent tidy data set with the average of 
+  ###   each variable for each activity and each subject.
+  
+  
   
   
   
