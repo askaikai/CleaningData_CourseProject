@@ -15,22 +15,22 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 ### CREATING THE TIDY DATASET
 In the process of creating the tidy data set, the following steps were taken;
-* Data from the train and test sessions were merged, and subject IDs and activity labels were added as new columns.
-* Only the variables that were related to the mean and standard deviation (std) were extracted. These variables were selected based on the variable names: any variables with "mean" or "std" were selected. 
-* Activity label were coded so they would make sense in English, such that:
-    1 -> "WALKING""
-    2 -> "WALKING_UPSTAIRS"
-    3 -> "WALKING_DOWNSTAIRS"
-    4 -> "SITTING"
-    5 -> "STANDING"
-    6 -> "LAYING"
-* Variable names were cleaned and organized with the following standard:
-    all in lower-case (e.g. Body -> body)
-    all punctuations (e.g. "()") were replaced with "."
-    use a full word instead of abbreviations (e.g. 'Mag' -> 'magnitude', except for 'fft')
-    words were separated with "." (e.g. "BodyAcc" -> "body.acceleration", following this: https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers).    
-* "meanSd_allData.txt" was written out this point.
-* Finally, mean of each variable was calculated for each activity and for each subject. The output of this final step is "meanSd_bySubByActivity.txt".
+1. Data from the train and test sessions were merged, and subject IDs and activity labels were added as new columns.
+2. Only the variables that were related to the mean and standard deviation (std) were extracted. These variables were selected based on the variable names: any variables with "mean" or "std" were selected. 
+3. Activity label were coded so they would make sense in English, such that:
+ *1 -> "WALKING"
+ *2 -> "WALKING_UPSTAIRS"
+ *3 -> "WALKING_DOWNSTAIRS"
+ *4 -> "SITTING"
+ *5 -> "STANDING"
+ *6 -> "LAYING"
+4. Variable names were cleaned and organized with the following standard:
+  *all in lower-case (e.g. Body -> body)
+  *all punctuations (e.g. "()") were replaced with "."
+  *use a full word instead of abbreviations (e.g. 'Mag' -> 'magnitude', except for 'fft')
+  *words were separated with "." (e.g. "BodyAcc" -> "body.acceleration", following this: https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers).
+  "meanSd_allData.txt" was written out this point.
+5. Finally, mean of each variable was calculated for each activity and for each subject. The output of this final step is "meanSd_bySubByActivity.txt".
     
 Thus, these are the main measurements (x,y,z as separate variables. mean/std/angle were derived from each measurement)    
 time.body.acceleration.x/y/z
