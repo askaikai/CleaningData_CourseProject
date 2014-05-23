@@ -160,51 +160,51 @@ hr {
 
 <h3>CREATING THE TIDY DATASET</h3>
 
-<p>In the process of creating the tidy data set, the following steps were taken;
-1. Data from the train and test sessions were merged, and subject IDs and activity labels were added as new columns.
-2. Only the variables that were related to the mean and standard deviation (std) were extracted. These variables were selected based on the variable names: any variables with &ldquo;mean&rdquo; or &ldquo;std&rdquo; were selected. 
-3. Activity label were coded so they would make sense in English, such that:
- *1 -&gt; &ldquo;WALKING&rdquo;
- *2 -&gt; &ldquo;WALKING_UPSTAIRS&rdquo;
- *3 -&gt; &ldquo;WALKING_DOWNSTAIRS&rdquo;
- *4 -&gt; &ldquo;SITTING&rdquo;
- *5 -&gt; &ldquo;STANDING&rdquo;
- *6 -&gt; &ldquo;LAYING&rdquo;
-4. Variable names were cleaned and organized with the following standard:
-  *all in lower-case (e.g. Body -&gt; body)
-  *all punctuations (e.g. &ldquo;()&rdquo;) were replaced with &ldquo;.&rdquo;
-  *use a full word instead of abbreviations (e.g. &#39;Mag&#39; -&gt; &#39;magnitude&#39;, except for &#39;fft&#39;)
-  *words were separated with &ldquo;.&rdquo; (e.g. &ldquo;BodyAcc&rdquo; -&gt; &ldquo;body.acceleration&rdquo;, following this: <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers">https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers</a>).
-  &ldquo;meanSd_allData.txt&rdquo; was written out this point.
-5. Finally, mean of each variable was calculated for each activity and for each subject. The output of this final step is &ldquo;meanSd_bySubByActivity.txt&rdquo;.</p>
+<p>In the process of creating the tidy data set, the following steps were taken;<br/>
+1. Data from the train and test sessions were merged, and subject IDs and activity labels were added as new columns.<br/>
+2. Only the variables that were related to the mean and standard deviation (std) were extracted. These variables were selected based on the variable names: any variables with &ldquo;mean&rdquo; or &ldquo;std&rdquo; were selected.<br/>
+3. Activity label were coded so they would make sense in English, such that:<br/>
+    *1 -&gt; &ldquo;WALKING&rdquo;<br/>
+    *2 -&gt; &ldquo;WALKING_UPSTAIRS&rdquo;<br/>
+    *3 -&gt; &ldquo;WALKING_DOWNSTAIRS&rdquo;<br/>
+    *4 -&gt; &ldquo;SITTING&rdquo;<br/>
+    *5 -&gt; &ldquo;STANDING&rdquo;<br/>
+    *6 -&gt; &ldquo;LAYING&rdquo;<br/>
+4. Variable names were cleaned and organized with the following standard:<br/>
+    *all in lower-case (e.g. Body -&gt; body)<br/>
+    *all punctuations (e.g. &ldquo;()&rdquo;) were replaced with &ldquo;.&rdquo;<br/>
+    *use a full word instead of abbreviations (e.g. &#39;Mag&#39; -&gt; &#39;magnitude&#39;, except for &#39;fft&#39;)<br/>
+    *words were separated with &ldquo;.&rdquo; (e.g. &ldquo;BodyAcc&rdquo; -&gt; &ldquo;body.acceleration&rdquo;, following this: <a href="https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers">https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml#identifiers</a>).<br/>
+    *&ldquo;meanSd_allData.txt&rdquo; was written out this point.<br/>
+5. Finally, mean of each variable was calculated for each activity and for each subject. The output of this final step is &ldquo;meanSd_bySubByActivity.txt&rdquo;.  </p>
 
 <p>Thus, these are the main measurements (x,y,z as separate variables. mean/std/angle were derived from each measurement)<br/>
-time.body.acceleration.x/y/z
-time.gravity.acceleration.x/y/z
-time.body.acceleration.jerk.x/y/z
-time.body.gyroscope.x/y/z
-time.body.gyroscope.jerk.x/y/z
-time.body.acceleration.magnitude
-time.gravity.acceleration.magnitude
-time.body.acceleration.jerk.magnitude
-time.body.gyroscope.magnitude
-time.body.gyroscope.jerk.magnitude
-fft.body.acceleration.x/y/z
-fft.body.acceleration.jerk.x/y/z
-fft.body.gyroscope.x/y/z
-fft.body.acceleration.magnitude
-fft.body.acceleration.jerk.magnitude
-fft.body.gyroscope.magnitude
-fft.body.gyroscope.jerk.magnitude</p>
+time.body.acceleration.x/y/z<br/>
+time.gravity.acceleration.x/y/z<br/>
+time.body.acceleration.jerk.x/y/z<br/>
+time.body.gyroscope.x/y/z<br/>
+time.body.gyroscope.jerk.x/y/z<br/>
+time.body.acceleration.magnitude<br/>
+time.gravity.acceleration.magnitude<br/>
+time.body.acceleration.jerk.magnitude<br/>
+time.body.gyroscope.magnitude<br/>
+time.body.gyroscope.jerk.magnitude<br/>
+fft.body.acceleration.x/y/z<br/>
+fft.body.acceleration.jerk.x/y/z<br/>
+fft.body.gyroscope.x/y/z<br/>
+fft.body.acceleration.magnitude<br/>
+fft.body.acceleration.jerk.magnitude<br/>
+fft.body.gyroscope.magnitude<br/>
+fft.body.gyroscope.jerk.magnitude  </p>
 
-<p>Additional vectors that contain &ldquo;mean&rdquo;
-gravity.mean
-time.body.acceleration.mean
-time.body.acceleration.jerk.mean
-time.body.gyroscope.mean
-time.body.gyroscope.jerk.mean</p>
+<p>Additional vectors that contain &ldquo;mean&rdquo;<br/>
+gravity.mean<br/>
+time.body.acceleration.mean<br/>
+time.body.acceleration.jerk.mean<br/>
+time.body.gyroscope.mean<br/>
+time.body.gyroscope.jerk.mean  </p>
 
-<p>Finally, variables &ldquo;sub.id&rdquo; denotes unique subject numbers, and &ldquo;activity&rdquo; is type of activity subjects were performing while mesurements were obtained.</p>
+<p>Finally, variables &ldquo;sub.id&rdquo; denotes unique subject numbers, and &ldquo;activity&rdquo; is type of activity subjects were performing while mesurements were obtained.  </p>
 
 <h3>LIST OF VARIABLES</h3>
 
@@ -282,7 +282,7 @@ time.body.gyroscope.jerk.mean</p>
 [72] &ldquo;fft.body.acceleration.magnitude.mean.frequency&rdquo;<br/>
 [73] &ldquo;fft.body.acceleration.jerk.magnitude.mean&rdquo;<br/>
 [74] &ldquo;fft.body.acceleration.jerk.magnitude.std&rdquo;<br/>
-[75] &ldquo;fft.body.acceleration.jerk.magnitude.mean.frequency&rdquo;
+[75] &ldquo;fft.body.acceleration.jerk.magnitude.mean.frequency&rdquo;<br/>
 [76] &ldquo;fft.body.gyroscope.magnitude.mean&rdquo;<br/>
 [77] &ldquo;fft.body.gyroscope.magnitude.std&rdquo;<br/>
 [78] &ldquo;fft.body.gyroscope.magnitude.mean.frequency&rdquo;<br/>
@@ -290,7 +290,7 @@ time.body.gyroscope.jerk.mean</p>
 [80] &ldquo;fft.body.gyroscope.jerk.magnitude.std&rdquo;<br/>
 [81] &ldquo;fft.body.gyroscope.jerk.magnitude.mean.frequency&rdquo;<br/>
 [82] &ldquo;angle.time.body.acceleration.mean.gravity&rdquo;<br/>
-[83] &ldquo;angle.time.body.acceleration.jerk.mean.gravity.mean&rdquo;
+[83] &ldquo;angle.time.body.acceleration.jerk.mean.gravity.mean&rdquo;<br/>
 [84] &ldquo;angle.time.body.gyroscope.mean.gravity.mean&rdquo;<br/>
 [85] &ldquo;angle.time.body.gyroscope.jerk.mean.gravity.mean&rdquo;<br/>
 [86] &ldquo;angle.x.gravity.mean&rdquo;<br/>
